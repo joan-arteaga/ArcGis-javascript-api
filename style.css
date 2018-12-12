@@ -1,0 +1,19 @@
+.clase{
+		font-family: Comic Sans ms;
+	}
+	#id{
+		text-align: center;
+		border: 2px solid blue;
+	}
+	h2{
+		color: red;
+	}
+/*prima la clase que la etiqueta o tag
+
+
+	/*seudo selector*/
+	/*hover: cuando este encima el puntero
+	*/
+	button:hover{
+		color: red;
+	}
