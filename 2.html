@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Create a Web Map</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link rel="stylesheet" type="text/css" href="https://js.arcgis.com/3.26/esri/css/esri.css">
+
+
+<style>
+ html,body,#mapDiv,.map.container{
+  padding:0;
+  margin:0;
+  height:100%;
+}
+#legendDiv{
+  background-color: #fff;
+  position: absolute !important;
+  z-index: 99;
+  top:10px;
+  right:20px;
+}
+</style>
+
+<!--no necesario-->
+<!--<script>var dojoConfig = { parseOnLoad:true };</script>-->
+<script src="https://js.arcgis.com/3.26compact/"></script>
+<script>
+  var map;
+  require([
+ 	"esri/map",
+//Acceso al metodo= toma identificacion de mapa web
+//crea un mapa basado en el contenido del mapa web
+ 	"esri/arcgis/utils",
+//agregar leyendas
+	"esri/dijit/Legend",
+ 	"dojo/domReady!"
+   ], function(Map,/*acceso al metodo*/arcgisUtils, /*leyenda*/Legend){
+   	arcgisUtils.createMap("a3fdf4adfd154997936a196ae52ab511", "mapDiv").then(function (response) {
+      map = response.map;
+
+
+ 	var legend = new Legend({
+    map: map,
+    //getLegendLayers (metod) para construir una matriz de capas de leyenda
+    layerInfos:(arcgisUtils.getLegendLayers(response))
+  	}, "legendDiv");
+      
+  	legend.startup();
+  	  });
+  });
+</script>
+</head>
+<body>
+
+  <div id="mapDiv"></div>
+  <div id="legendDiv"></div>
+
+</body>
+</html>
+
